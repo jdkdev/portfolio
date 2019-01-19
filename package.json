@@ -1,0 +1,41 @@
+{
+  "name": "express-test",
+  "version": "0.0.1",
+  "description": "starter set",
+  "main": "server.js",
+  "author": "j",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "scss": "node-sass --output-style compressed -o dist/css scss",
+    "lint": "eslint js || true",
+    "uglify": "mkdirp dist/js -p && cp js/*.js dist/js/main.js",
+    "serve": "browser-sync start -c bs-config.js",
+    "build:css": "run-s scss",
+    "build:js": "run-s lint uglify",
+    "build": "run-s build:*",
+    "watch:css": "onchange \"scss\" -- run-s build:css",
+    "watch:js": "onchange \"js\" -- run-s build:js",
+    "runit": "run-s dev serve",
+    "watch": "run-p start serve watch:*"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "latest",
+    "formidable": "^1.2.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "eslint": "^5.12.0",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
+    "uglify-js": "^3.4.9"
+  },
+  "engines": {
+    "node": "8.10.x"
+  }
+}
