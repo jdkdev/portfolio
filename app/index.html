@@ -223,62 +223,27 @@
             </section>
         </main>
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js"></script>
-    <script src="js/AceEditor.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../node_modules/vue/dist/vue.js"></script>
     <script>
         devURI = 'https://knightworks-dev.herokuapp.com/'
         new Vue({
             el: '#app',
             components: {
-                'ace-editor': AceEditor,
             },
             data: {
                 message: 'hello there',
                 css: 'color: red',
                 //  content string
                 scss: 'h1 { color: red; > small { color: pink }}',
-                
-                //  options object
-                //  https://github.com/ajaxorg/ace/wiki/Configuring-Ace
-                editoroptions: {
-                    mode:'scss',
-                    theme: 'monokai',
-                    fontSize: 16,
-                    fontFamily: 'monospace',
-                    highlightActiveLine: false,
-                    highlightGutterLine: false,
-                }
             },
             filters: {
             },
             created() {
-                this.getStyles()
             },
             computed: {
             },
             methods: {
-                getStyles() {
-                    styles = document.getElementById('scss-style')
-                    this.scss = styles.innerHTML 
-                },
-                whitespace() {
-                  this.scss =  this.scss.trim().replace(/\s/g,'')
-                },
-                convert() {
-                    code = encodeURIComponent(this.scss.trim())
-                    axios.get(devURI + 'convert?scss=' + code, {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    .then(res => {
-                        this.css = res.data.css
-                        styles = document.getElementById('preview')
-                        styles.innerHTML = this.css
-                    })
-                }
             },
         })
     </script>

@@ -20,10 +20,13 @@
     "watch": "run-p start serve watch:*"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "latest",
-    "formidable": "^1.2.1"
+    "formidable": "^1.2.1",
+    "picnic": "^6.5.0",
+    "vue": "^2.5.22"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",

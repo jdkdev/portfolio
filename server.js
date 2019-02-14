@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(express.static('dist'))
 // FUNCTIONS
 const l = (val) => console.log(val)
-
 const lg = (val='nothing passed in') => {
 	l(val)
 	l(typeof val)
@@ -32,8 +31,8 @@ const lg = (val='nothing passed in') => {
     //next();
 //});
 app.get('/', function(req, res) {
-    lg(path.join(__dirname, 'index.html'))
-    res.sendFile(path.join(__dirname, 'index.html'));
+    lg(path.join(__dirname, 'app/index.html'))
+    res.sendFile(path.join(__dirname, 'app/index.html'));
 })
 
 
@@ -61,7 +60,5 @@ app.get('/math', function(req, res) {
     res.json({inputs, answer})
     
 })
-
-
 
 var server = app.listen(process.env.PORT || 3000, function() {console.log('********************** Server listening on port %s *', server.address().port);})
