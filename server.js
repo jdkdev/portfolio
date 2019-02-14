@@ -24,20 +24,21 @@ const lg = (val='nothing passed in') => {
 	l('--------------------')
 }
 
-//
-//app.use(function(req, res, next) {
-    //res.header("Access-Control-Allow-Origin", "*");
-    //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    //next();
-//});
 app.get('/', function(req, res) {
     lg(path.join(__dirname, 'app/index.html'))
     res.sendFile(path.join(__dirname, 'app/index.html'));
 })
 
 
-app.get('/test', function(req, res) {
-    res.send('ok')
+app.get('/slideshow', function(req, res) {
+    fs.readdir('./dist/assets/slideshow', (err, files) => {
+        let fileList = []
+        for (file of files) {
+            fileList.push('assets/slideshow/' + file)
+        }
+        console.log(fileList)
+        res.send(fileList)
+    })
 })
 
 app.get('/convert', cors(), function(req, res) {
@@ -58,7 +59,6 @@ app.get('/math', function(req, res) {
       l(`stdout: ${stdout}`);
     });
     res.json({inputs, answer})
-    
 })
 
-var server = app.listen(process.env.PORT || 3000, function() {console.log('********************** Server listening on port %s *', server.address().port);})
+var server = app.listen(process.env.PORT || 5000, function() {console.log('********************** Server listening on port %s *', server.address().port);})

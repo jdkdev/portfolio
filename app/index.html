@@ -2,244 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Node</title>
+    <title>LLPS</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="https://unpkg.com/picnic">
+    <link rel="stylesheet" href="css/picnic.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <style>
-        main {
-            padding: 80px 100px;
-        }
-        .preview-shell {
-            padding: 15px 75px;
-            border: 1px solid #CECECE;
-        }
-    </style>
-    <style id="scss-style" rel="stylesheet/scss" lang='scss'>
-        $primary: #27B4BD;
-        .ca-form-2 {
-          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-          /* background: #FBFBFB; */
-          .input-group {
-            display: block;
-            color: #434343;
-            padding-bottom: 17px;
-            > label {
-              display: block;
-              padding-bottom: 11px;
-              font-size: 19px;
-            }
-            small {
-              font-size: .9rem;
-              font-weight: 400;
-              display: block;
-            }
-            > {
-              textarea {
-                height: 75px;
-                width: 500px;
-              }
-              input[type=text] {
-                max-width: 500px;
-                padding: 6px;
-                width: 100%;
-              }
-            }
-            textarea {
-              max-width: 500px;
-              padding: 6px;
-              width: 100%;
-              &:focus {
-                border-color: $primary;
-                -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-                -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-                border-radius: 4px;
-              }
-            }
-            > input[type=text]:focus {
-              border-color: $primary;
-              -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-              -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-              box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-              border-radius: 4px;
-            }
-            > input[type="radio"] {
-              display: none;
-              + label {
-                font-weight: 400;
-                font-size: 20px;
-                display: inline-block;
-                margin-left: 22px;
-                span {
-                  display: inline-block;
-                  width: 15px;
-                  height: 15px;
-                  margin: -3px 7px 0 0;
-                  vertical-align: middle;
-                  background: #EDEDED;
-                  cursor: pointer;
-                  border: 1px solid #777777;
-                  border-radius: 50%;
-                  background-image: linear-gradient(#FFFFFF, #DCDCDC);
-                }
-              }
-              &:checked + label span {
-                background: $primary;
-                background-image: linear-gradient(#38C5CE, #05828B);
-              }
-            }
-          }
-        }
-    </style>
-    <style id="preview" rel="stylesheet/scss" lang='scss'>
-        .ca-form-2 {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            /* background: #FBFBFB; */
-        }
-
-        .ca-form-2 .input-group {
-            display: block;
-            color: #434343;
-            padding-bottom: 17px;
-        }
-
-        .ca-form-2 .input-group > label {
-            display: block;
-            padding-bottom: 11px;
-            font-size: 19px;
-        }
-
-        .ca-form-2 .input-group small {
-            font-size: .9rem;
-            font-weight: 400;
-            display: block;
-        }
-
-        .ca-form-2 .input-group > textarea {
-            height: 75px;
-            width: 500px;
-        }
-
-        .ca-form-2 .input-group > input[type=text], .ca-form-2 .input-group textarea {
-            max-width: 500px;
-            padding: 6px;
-            width: 100%;
-        }
-
-        .ca-form-2 .input-group > input[type=text]:focus, .ca-form-2 .input-group textarea:focus {
-            border-color: #27B4BD;
-            -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            border-radius: 4px;
-        }
-
-        .ca-form-2 .input-group > input[type="radio"] {
-            display: none;
-        }
-
-        .ca-form-2 .input-group > input[type="radio"] + label {
-            font-weight: 400;
-            font-size: 20px;
-            display: inline-block;
-            margin-left: 22px;
-        }
-
-        .ca-form-2 .input-group > input[type="radio"] + label span {
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            margin: -3px 7px 0 0;
-            vertical-align: middle;
-            background: #EDEDED;
-            cursor: pointer;
-            border: 1px solid #777777;
-            border-radius: 50%;
-            background-image: linear-gradient(#FFFFFF, #DCDCDC);
-        }
-
-        .ca-form-2 .input-group > input[type="radio"]:checked + label span {
-            background: #27B4BD;
-            background-image: linear-gradient(#38C5CE, #05828B);
-        }
-    </style>
 </head>
 <body>
     <div id="app">
-        <nav>
-            <h3>Express Starter</h3>
-            <a href="https://picnicss.com/documentation" target="_blank">CSS Docs</a>
-        </nav>
-        <main>
-            <section class="tabs four">
-                <input id='tab-1' type='radio' name='tabgroup' checked />
-                <label class="pseudo button toggle" for="tab-1">SCSS Converter</label>
-                <input id='tab-2' type='radio' name='tabgroup'>
-                <label class="pseudo button toggle" for="tab-2">CSS</label>
-                <input id='tab-3' type='radio' name='tabgroup'>
-                <label class="pseudo button toggle" for="tab-3">Examples</label>
-                <input id='tab-4' type='radio' name='tabgroup'>
-                <label class="pseudo button toggle" for="tab-4">Grid</label>
-                <div class="row">
-                    <article>
-                        <button @click="convert">Convert</button>
-                        <div class="flex two">
-                            <div>
-                                <ace-editor 
-                                    v-model:value ="scss" 
-                                    :options="editoroptions" 
-                                    id="editor" >
-                                </ace-editor>
-                                <button @click="whitespace">Clear Whitespace</button>
-                            </div>
-                            <div class="preview-shell" @mouseenter="convert">
-                                <div class="preview">
-                                    <form class="ca-form-2" method="POST"><input name="Source" type="hidden" value="web"><input name="FormID" type="hidden" value="6b05d25d-cd2e-40b4-a977-e434ef93e556"><div class="input-group"><label>First</label><input name="a8fefab8-9e85-4b31-a06f-f1f192a3ebe5_First" type="text"></div><div class="input-group"><label>Last</label><input name="a8fefab8-9e85-4b31-a06f-f1f192a3ebe5_Last" type="text"></div><div class="input-group"><label>Email</label><input name="a530c91b-22da-4e10-9aea-a6a412531919" type="text"></div><div class="input-group"><label>Phone</label><input name="d81b36a2-d8b0-4034-b2fa-75d43d5c8cee" type="text"></div><div class="input-group"><label>Address</label><input name="c67158c2-55c4-437a-8942-757e48d81133_Address" type="text"></div><div class="input-group"><label>Address 2</label><input name="c67158c2-55c4-437a-8942-757e48d81133_AddressTwo" type="text"></div><div class="input-group"><label>City</label><input name="c67158c2-55c4-437a-8942-757e48d81133_City" type="text"></div><div class="input-group"><label>State</label><input name="c67158c2-55c4-437a-8942-757e48d81133_State" type="text"></div><div class="input-group"><label>Postal Code</label><input name="c67158c2-55c4-437a-8942-757e48d81133_Zip" type="text"></div><div class="input-group"><label>Are you available FULL TIME?<br> (meaning 31-40 hrs/wk M-F 8-5ish)</label><input name="d69fb116-dca9-417f-ad29-468ff1ff50b5" type="radio" value="Yes"></div><div class="input-group"><label>What is your availability?<br> <br> Please be as specific as possible.<br> How many hours a week do you expect/require?</label><textarea name="c89239a7-06fa-4923-96e3-57c5d7ebc56b"></textarea></div><div class="input-group"><label>Employment History</label><textarea name="23bb3898-50f6-4c84-9b1d-21def3ac65c5"></textarea></div><div class="input-group"><label>Do you have a VALID and CURRENT driver's license?</label><input name="39a0e45a-216e-43uc2-84e8-02fddaddd843" type="radio" value="Yes"></div><div class="input-group"><label>Do you have a reliable, 4-wheeled vehicle available to you at all times?<br> <br> (Not a moped, not your roommate's car.)</label><input name="7095b400-920c-4e64-9b43-8aa3f7a6d78c" type="radio" value="Yes"></div><div class="input-group"><label>Care to elaborate on your transportation situation?</label><textarea name="0dbe7f25-1c68-4dfe-99a7-b835dbe24e58"></textarea></div><div class="input-group"><label>Tell us about you and why you love to clean!</label><textarea name="77dc0589-2645-435d-8c9c-1ae2f8f9e141"></textarea></div><div class="input-group"><label>How did you hear about this job?</label><input name="dda648f0-9cbf-47c9-bb1d-782ff500993f" type="text"></div><div class="input-group"><label>Your digital "signature" agreeing to the statement above.</label><input name="fcb7616a-675c-4047-bccc-aeeae3756d6c" type="text"></div><div class="input-group"><label>Proposed date of interview</label><input name="c85931b4-0c63-44ee-9bdc-0e12ef8b453f" type="text"></div></form>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <textarea class="page" placeholder="Text area">
-                            {{ css }}
-                        </textarea>
-                    </article>
-                    <article>
-                        <fieldset class="flex three">
-                            <label><input type="email" placeholder="Email"></label>
-                            <label><input type="password" placeholder="Password"></label>
-                        </fieldset>
-                        <textarea placeholder="Text area"></textarea>
-                    </article>
-                    <article class="flex three grow demo">
-                        <div><span>1</span></div>
-                        <div><span>2</span></div>
-                        <div><span>3</span></div>
-                        <div><span>4</span></div>
-                        <div><span>5</span></div>
-                    </article>
-                </div>
+        <header>
+            <img class="banner" src="assets/littlelilybanner.jpg" alt="banner"/ width="">
+        </header>
+        <main class="flex two">
+            <section class="sub-nav">
+                <span>
+                    Each crepe paper flower is carefully handcrafted to capture the beauty of real flowers and the lovely feeling we have admiring them.
+                </span>
+                <p>
+                    The flowers in my shop are made with high quality German and Italian crepe paper as well as mixed media to produce blooms that keep on blooming! Need matching decorations? Check out some of the other paper décor in the shop! Brighten special occasions such as baby showers, bridal showers, weddings, and anniversaries.
+                </p>
+                    Cheer someone up or offer a bit of congratulations for those memorable moments.
+                    Whatever the occasion, I hope these crepe paper flowers and decorations will be a cheerful addition to your special day.
+            </section>
+            <section class="slideshow tabs four">
+                <input id="tabC-0" type='radio' name='tabGroupC' checked >
+                <input id="tabC-1" type='radio' name='tabGroupC'>
+                <input id="tabC-2" type='radio' name='tabGroupC'>
+                <input id="tabC-3" type='radio' name='tabGroupC'>
+                <article class='row'>
+                    <div v-for="image in images">
+                        <img class="slideshow-active" :src="image">
+                    </div>
+                </article>
+                <label class="thumbnail" v-for="(image, index) in images" :for="'tabC-' + index"><img :src="image"></label>
             </section>
         </main>
+        <footer>
+                
+        </footer>
     </div>
-    <script src="../node_modules/axios/dist/axios.js"></script>
-    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="js/axios.js"></script>
+    <script src="js/vue.js"></script>
     <script>
-        devURI = 'https://knightworks-dev.herokuapp.com/'
         new Vue({
             el: '#app',
             components: {
             },
             data: {
-                message: 'hello there',
-                css: 'color: red',
-                //  content string
-                scss: 'h1 { color: red; > small { color: pink }}',
+                images: [
+                ],
             },
             filters: {
             },
-            created() {
+            mounted() {
+                axios.get('/slideshow')
+                .then(response => this.images = response.data)
             },
             computed: {
             },

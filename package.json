@@ -16,8 +16,8 @@
     "build": "run-s build:*",
     "watch:css": "onchange \"scss\" -- run-s build:css",
     "watch:js": "onchange \"js\" -- run-s build:js",
-    "runit": "run-s dev serve",
-    "watch": "run-p start serve watch:*"
+    "runit": "run-s build dev",
+    "watch": "run-p runit watch:*"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -1,13 +1,20 @@
 body {
-    background: #F0F0F0;
 }
 main {
-    > section {
+    padding: 25px 90px;
+}
+.banner {
+    max-width: 100%;
+}
+
+.sub-nav {
+    padding: 0 60px;
+    max-width: 500px;
+}
+.xslideshow img {
+    > .active {
     }
-}
-.demo {
-    border: 1px solid black;
-}
-.page {
-    height: 200px;
+    > .thumbnail {
+        max-width: 200px;
+    }
 }
