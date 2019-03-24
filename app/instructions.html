@@ -9,10 +9,18 @@
 </head>
 <body>
     <div id="app">
+        account: {{account}}
+        <br>
+        
+        error {{ errorMessage}}
+        <br>
+        showinstructions        {{ showInstructions }}
+        <br>
+                {{currentItem}}
+        <br>
         <header style="display:flex; justify-content: center;">
             <img class="banner" src="assets/littlelilybanner.jpg" alt="banner"/ width="">
         </header>
-
 
         <main v-if="showInstructions">
             <section class="order-instructions">
@@ -131,6 +139,7 @@
                         localStorage.setItem('llps-account', 'Coldwater Creek')
                     } else {
                         this.errorMessage = 'Account not found'
+
                     }
                 }
             },
