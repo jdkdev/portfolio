@@ -1,7 +1,7 @@
 {
-  "name": "express-test",
+  "name": "llps",
   "version": "0.0.1",
-  "description": "starter set",
+  "description": "Little Lily Paper Studio Site",
   "main": "server.js",
   "author": "j",
   "scripts": {

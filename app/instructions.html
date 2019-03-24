@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paper Flower and Decorations Crepe Paper Little Lily Paper Studio</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="css/picnic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <header style="display:flex; justify-content: center;">
+            <img class="banner" src="assets/littlelilybanner.jpg" alt="banner"/ width="">
+        </header>
+
+
+        <main v-if="showInstructions">
+            <section class="order-instructions">
+                <h1>Welcome Coldwater Creek!</h1>
+                <h3>Below is your most recent order</h3>
+                <hr/>
+                <section class="flex two">
+                    <article>
+                        <h2>Grand Magnolia Storefront display - 10 piece set</h2>               
+                            <dl v-for="item in order">
+                                <dt class="pointer" @click="currentItem = item">{{item.name}}</dt>
+                                <dd>Quantity: {{item.qty}}</dd>
+                            </dl>
+                    </article>
+                    <article>
+                        <img width="500px" class="" :src="currentItem.image">
+                    </article>
+                </section>
+
+            </section>
+        </main>
+        <main v-else>
+            <section class="new-account">
+                <label>Please enter your company name to get started</label>
+                <input type="text" v-model="account" name="account" id="account"/>
+                <button @click="checkAccount">Submit</button>
+            </section>
+        </main>
+        <footer>
+        </footer>
+    </div>
+    <script src="js/axios.js"></script>
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            components: {
+            },
+            data: {
+                account: '',
+                showInstructions: false,
+                images: [],
+                currentItem: {},
+                order: {
+                    bloom: {
+                        name: 'Magnolia Bloom (w/ pink highlights)',
+                        qty: 4,
+                        itemId: 'A',
+                        image: 'assets/cwc-order/bloom.JPG',
+                    },
+                    dbBr: {
+                        name: 'Dual Hanging Magnolia Branch (w/ leaves)',
+                        qty: 1,
+                        itemId: 'B',
+                        image: 'assets/cwc-order/dbBr.JPG',
+
+                    },
+                    sgBr: {
+                        name: 'Single Hanging Magnolia Branch (w/ leaves)',
+                        qty: 1,
+                        itemId: 'C',
+                        image: 'assets/cwc-order/sgBr.JPG',
+                    },
+                    stdBr: {
+                        name: 'Single Freestanding Magnolia Branch (w/ leaves)',
+                        qty: 1,
+                        itemId: 'D',
+                        image: 'assets/cwc-order/stdBr.JPG',
+                    },
+                    gr15: {
+                        name: '15" Standing Grass',
+                        qty: 1,
+                        itemId: 'E',
+                        image: 'assets/cwc-order/gr15.JPG',
+                    },
+                    gr21: {
+                        name: '21" Standing Grass',
+                        qty: 1,
+                        itemId: 'F',
+                        image: 'assets/cwc-order/gr21.JPG',
+                    },
+                    gr28: {
+                        name: '28" Standing Grass',
+                        qty: 1,
+                        itemId: 'G',
+                        image: 'assets/cwc-order/gr28.JPG',
+                    },
+                },
+            },
+            filters: {
+            },
+            mounted() {
+                this.currentItem = this.order.bloom
+                this.account = localStorage.getItem('llps-account') || ''
+                this.checkAccount()
+                axios.get('/cwc-order')
+                .then(response => this.images = response.data)
+            },
+            computed: {
+            },
+            methods: {
+                checkAccount() {
+                    validAccounts = ['cold', 'water', 'creek']
+                    this.showInstructions = validAccounts.some(element => this.account.includes(element.toLowerCase()))
+                    localStorage.setItem('llps-account', this.account)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

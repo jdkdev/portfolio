@@ -28,6 +28,10 @@ app.get('/', function(req, res) {
     lg(path.join(__dirname, 'app/index.html'))
     res.sendFile(path.join(__dirname, 'app/index.html'));
 })
+app.get('/instructions', function(req, res) {
+    lg(path.join(__dirname, 'app/instructions.html'))
+    res.sendFile(path.join(__dirname, 'app/instructions.html'));
+})
 
 
 app.get('/slideshow', function(req, res) {
@@ -36,7 +40,16 @@ app.get('/slideshow', function(req, res) {
         for (file of files) {
             fileList.push('assets/slideshow/' + file)
         }
-        console.log(fileList)
+        res.send(fileList)
+    })
+})
+
+app.get('/cwc-order', function(req, res) {
+    fs.readdir('./dist/assets/cwc-order', (err, files) => {
+        let fileList = []
+        for (file of files) {
+            fileList.push('assets/cwc-order/' + file)
+        }
         res.send(fileList)
     })
 })
