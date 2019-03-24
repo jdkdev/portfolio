@@ -33,6 +33,10 @@
                 </section>
 
             </section>
+            <section>
+                <hr/>
+                <h2>Instructions</h2>
+            </section>
         </main>
         <main v-else>
             <section class="new-account">
@@ -116,9 +120,12 @@
             },
             methods: {
                 checkAccount() {
+                    var account = this.account
                     this.errorMessage = ''
                     validAccounts = ['cold', 'water', 'creek']
-                    let validation =  validAccounts.some(element => this.account.includes(element.toLowerCase()))
+                    var validation = validAccounts.some(function (element) {
+                      return account.includes(element.toLowerCase());
+                    });
                     if (validation) { 
                         this.showInstructions = true
                         localStorage.setItem('llps-account', 'Coldwater Creek')
