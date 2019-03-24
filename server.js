@@ -44,15 +44,6 @@ app.get('/slideshow', function(req, res) {
     })
 })
 
-app.get('/cwc-order', function(req, res) {
-    fs.readdir('./dist/assets/cwc-order', (err, files) => {
-        let fileList = []
-        for (file of files) {
-            fileList.push('assets/cwc-order/' + file)
-        }
-        res.send(fileList)
-    })
-})
 
 app.get('/convert', cors(), function(req, res) {
     scss = req.query.scss

@@ -17,7 +17,7 @@
         <main v-if="showInstructions">
             <section class="order-instructions">
                 <h1>Welcome Coldwater Creek!</h1>
-                <h3>Below is your most recent order</h3>
+                <h3>Below is your most recent order.</h3>
                 <hr/>
                 <section class="flex two">
                     <article>
@@ -39,6 +39,7 @@
                 <label>Please enter your company name to get started</label>
                 <input type="text" v-model="account" name="account" id="account"/>
                 <button @click="checkAccount">Submit</button>
+                <div v-show="errorMessage" class="label warning">{{errorMessage}}</div>
             </section>
         </main>
         <footer>
@@ -53,6 +54,7 @@
             },
             data: {
                 account: '',
+                errorMessage: '',
                 showInstructions: false,
                 images: [],
                 currentItem: {},
@@ -108,16 +110,21 @@
                 this.currentItem = this.order.bloom
                 this.account = localStorage.getItem('llps-account') || ''
                 this.checkAccount()
-                axios.get('/cwc-order')
-                .then(response => this.images = response.data)
+                this.errorMessage = ''
             },
             computed: {
             },
             methods: {
                 checkAccount() {
+                    this.errorMessage = ''
                     validAccounts = ['cold', 'water', 'creek']
-                    this.showInstructions = validAccounts.some(element => this.account.includes(element.toLowerCase()))
-                    localStorage.setItem('llps-account', this.account)
+                    let validation =  validAccounts.some(element => this.account.includes(element.toLowerCase()))
+                    if (validation) { 
+                        this.showInstructions = true
+                        localStorage.setItem('llps-account', 'Coldwater Creek')
+                    } else {
+                        this.errorMessage = 'Account not found'
+                    }
                 }
             },
         })
