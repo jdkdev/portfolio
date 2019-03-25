@@ -9,15 +9,17 @@
 </head>
 <body>
     <div id="app">
-        account: {{account}}
-        <br>
-        
-        error {{ errorMessage}}
-        <br>
-        showinstructions        {{ showInstructions }}
-        <br>
-                {{currentItem}}
-        <br>
+        <div v-if="debug" class="debug">
+            account: {{account}}
+            <br>
+            
+            error {{ errorMessage}}
+            <br>
+            showinstructions        {{ showInstructions }}
+            <br>
+                    {{currentItem}}
+            <br>
+        </div>
         <header style="display:flex; justify-content: center;">
             <img class="banner" src="assets/littlelilybanner.jpg" alt="banner"/ width="">
         </header>
@@ -41,15 +43,148 @@
                 </section>
 
             </section>
-            <section>
+            <section class="instructions">
                 <hr/>
-                <h2>Instructions</h2>
+                <h2>Assembly Instructions for {{currentItem.name}}</h2>
+                <article v-if="currentItem.itemId == 'A'">
+                    <strong>Shaping the Bloom</strong>
+                    <ol>
+                        <li>Blooms have 3 inner petals and 5 larger outer petals. All petals contain wires that allow them to open and close.</li>
+                        <li>To open a petal, from the inside of the petal gently push petal out and away from the center.</li>
+                        <li>To close a petal, gently push the outside of the petal in toward the center.</li>
+                        <li>See branch items for mounting a bloom to a branch.</li>
+                    </ol>
+                </article>
+                <article v-if="currentItem.itemId == 'B'">
+                    <strong>Setting up the Branch</strong>
+                    <ol>
+                        <li>Read through all steps before hanging the branch.</li>
+                        <li>It is best to extend the limbs, shape leaves and mount bloom before hanging.</li>
+                        <li>The branch comes with 2 eye hooks for hanging.</li>
+                        <li>Depending on the environment, additional contact points may be needed to position bloom.</li>
+                    </ol>
+                    <strong>Extending the Limbs</strong>
+                    <ol>
+                        <li>With one hand, hold branch neck at limb offshoot.</li>
+                        <li>With your other hand, bend limb outward to desired shape.</li>
+                        <li>With your other hand, pull branch limb out away from the center. Limbs are durable but can detach. </li>
+                    </ol>
+                    <strong>Shaping the Leaves</strong>
+                    <ol>
+                        <li>All the leaves contain wires that can be used for shaping. </li>
+                        <li>Pull leaves away from the branch and bend/shape as desired.</li>
+                    </ol>
+                    <strong>Mounting the blooms</strong>
+                    <ol>
+                        <li>The bloom comes with 1/4" hex nuts inserted ~ 1" into the base of the bloom.</li>
+                        <li>Gently rest the bloom onto the 1/4" threaded rod of the branch.</li>
+                        <li>It will slide in until it makes contact with the first hex nut.</li>
+                        <li>Hold the branch neck with one hand.</li>
+                        <li>With your other hand on the base of the bloom, rotate the bloom left.</li>
+                        <li>Turn until you feel it tighten, but do NOT overtighten the bloom.</li>
+                        <li>Repeat with other bloom</li>
+                    </ol>
+                    <strong>Shaping the Bloom</strong>
+                    <ol>
+                        <li>All petals contain wires that allow them to open and blossom.</li>
+                        <li>To open a petal, from the inside of the petal gently push petal out and away from the center.</li>
+                        <li>To close a petal, gently push the outside of the petal in toward the center.</li>
+                    </ol>
+                </article>
+                <article v-if="currentItem.itemId == 'C'">
+                    <strong>Setting up the Branch</strong>
+                    <ol>
+                        <li>Read through all steps before hanging the branch.</li>
+                        <li>It is best to extend the limbs, shape leaves and mount bloom before hanging.</li>
+                        <li>The branch comes with 2 eye hooks for hanging.</li>
+                        <li>Depending on the environment, additional contact points may be needed to position bloom.</li>
+                    </ol>
+                    <strong>Extending the Limbs</strong>
+                    <ol>
+                        <li>With one hand, hold branch neck at limb offshoot.</li>
+                        <li>With your other hand, bend limb outward to desired shape.</li>
+                        <li>With your other hand, pull branch limb out away from the center. Limbs are durable but can detach. </li>
+                    </ol>
+                    <strong>Shaping the Leaves</strong>
+                    <ol>
+                        <li>All the leaves contain wires that can be used for shaping. </li>
+                        <li>Pull leaves away from the branch and bend/shape as desired.</li>
+                    </ol>
+                    <strong>Mounting the bloom</strong>
+                    <ol>
+                        <li>The bloom comes with 1/4" hex nuts inserted ~ 1" into the base of the bloom.</li>
+                        <li>Gently rest the bloom onto the 1/4" threaded rod of the branch.</li>
+                        <li>It will slide in until it makes contact with the first hex nut.</li>
+                        <li>Hold the branch neck with one hand.</li>
+                        <li>With your other hand on the base of the bloom, rotate the bloom left.</li>
+                        <li>Turn until you feel it tighten, but do NOT overtighten the bloom.</li>
+                    </ol>
+                    <strong>Shaping the Bloom</strong>
+                    <ol>
+                        <li>All petals contain wires that allow them to open and blossom.</li>
+                        <li>To open a petal, from the inside of the petal gently push petal out and away from the center.</li>
+                        <li>To close a petal, gently push the outside of the petal in toward the center.</li>
+                    </ol>
+                </article>
+                <article v-if="currentItem.itemId == 'D'">
+                    <strong>Setting up the Branch</strong>
+                    <ol>
+                        <li>Place branch down on a level surface. </li>
+                        <li>With one hand, hold circular base.</li>
+                        <li>With your other hand, pull branch neck back to an upright position.</li>
+                    </ol>
+                    <strong>Extending the Limbs</strong>
+                    <ol>
+                        <li>With one hand, hold branch neck at limb offshoot.</li>
+                        <li>With your other hand, bend limb outward to desired shape.</li>
+                        <li>With your other hand, pull branch neck back to an upright position.</li>
+                    </ol>
+                    <strong>Shaping the Leaves</strong>
+                    <ol>
+                        <li>All the leaves contain wires that can be used for shaping. </li>
+                        <li>Pull leaves away from the branch and bend/shape as desired.</li>
+                    </ol>
+                    <strong>Mounting the bloom</strong>
+                    <ol>
+                        <li>The bloom comes with 1/4" hex nuts inserted ~ 1" into the base of the bloom.</li>
+                        <li>Gently rest the bloom onto the 1/4" threaded rod of the branch.</li>
+                        <li>It will slide in until it makes contact with the first hex nut.</li>
+                        <li>Hold the branch neck with one hand.</li>
+                        <li>With your other hand on the base of the bloom, rotate the bloom left.</li>
+                        <li>Turn until you feel it tighten, but do NOT overtighten the bloom.</li>
+                        <li>Once mounted, adjust branch neck and base to balance the bloom on the stand. Adjust branch limbs as well.</li>
+                    </ol>
+                    <strong>Shaping the Bloom</strong>
+                    <ol>
+                        <li>All petals contain wires that allow them to open and blossom.</li>
+                        <li>To open a petal, from the inside of the petal gently push petal out and away from the center.</li>
+                        <li>To close a petal, gently push the outside of the petal in toward the center.</li>
+                    </ol>
+                </article>
+                <article v-if="currentItem.itemId == 'E'">
+                    <strong>Place Where Desired!</strong>
+                    <ol>
+                        <li>Grass comes preassembled, just place where desired.</li>
+                    </ol>
+                </article>
+                <article v-if="currentItem.itemId == 'F'">
+                    <strong>Place Where Desired!</strong>
+                    <ol>
+                        <li>Grass comes preassembled, just place where desired.</li>
+                    </ol>
+                </article>
+                <article v-if="currentItem.itemId == 'G'">
+                    <strong>Place Where Desired!</strong>
+                    <ol>
+                        <li>Grass comes preassembled, just place where desired.</li>
+                    </ol>
+                </article>
             </section>
         </main>
         <main v-else>
             <section class="new-account">
                 <label>Please enter your company name to get started</label>
-                <input type="text" v-model="account" name="account" id="account"/>
+                <input @keyup.enter="checkAccount" type="text" v-model="account" name="account" id="account"/>
                 <button @click="checkAccount">Submit</button>
                 <div v-show="errorMessage" class="label warning">{{errorMessage}}</div>
             </section>
