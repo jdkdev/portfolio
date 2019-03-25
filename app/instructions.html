@@ -9,17 +9,6 @@
 </head>
 <body>
     <div id="app">
-        <div v-if="debug" class="debug">
-            account: {{account}}
-            <br>
-            
-            error {{ errorMessage}}
-            <br>
-            showinstructions        {{ showInstructions }}
-            <br>
-                    {{currentItem}}
-            <br>
-        </div>
         <header style="display:flex; justify-content: center;">
             <img class="banner" src="assets/littlelilybanner.jpg" alt="banner"/ width="">
         </header>
@@ -163,21 +152,12 @@
                 </article>
                 <article v-if="currentItem.itemId == 'E'">
                     <strong>Place Where Desired!</strong>
-                    <ol>
-                        <li>Grass comes preassembled, just place where desired.</li>
-                    </ol>
                 </article>
                 <article v-if="currentItem.itemId == 'F'">
                     <strong>Place Where Desired!</strong>
-                    <ol>
-                        <li>Grass comes preassembled, just place where desired.</li>
-                    </ol>
                 </article>
                 <article v-if="currentItem.itemId == 'G'">
                     <strong>Place Where Desired!</strong>
-                    <ol>
-                        <li>Grass comes preassembled, just place where desired.</li>
-                    </ol>
                 </article>
             </section>
         </main>

@@ -1,4 +1,5 @@
 const express = require('express')
+const http = require("http")
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const fs = require("fs")
@@ -61,9 +62,16 @@ app.get('/math', function(req, res) {
     l('hello')
     exec('npm run convert', (err, stdout, stderr) => {
       l(`stdout: ${stdout}`);
-    });
+    })
     res.json({inputs, answer})
 })
-
+var checkTime = function() {
+    let hour = new Date().getUTCHours()
+    if (hour > 7 || hour < 21) {
+        http.get("http://www.littlelilypaperstudio.com")
+    }
+}
 
 var server = app.listen(process.env.PORT || 5000, function() {console.log('********************** Server listening on port %s *', server.address().port);})
+
+setInterval(checkTime, 1200000) // every 20 min
